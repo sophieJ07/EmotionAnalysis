@@ -23,9 +23,22 @@ The following data were extracted from each reply:
 - URL to the user profile
 - Date of posting
 
-## Repository Structure 
+## Repository Outline 
+### Data/
+- tweets.csv: Emotions Dataset
+- letter.csv: Biden's post replies
+- news.csv: CNN's post replies
 
-
+### Source/
+- preprocess.py: Text preprocessing functions
+- train.py: Model training script
+- visualize.py: Learning curve visualization
+- evaluate.py: Model evaluation with a series of metrics
+- confidence_evaluation.py: Model decision confidence evaluation and visualization with decision scores
+- confidence_metrics_by_emotion.py: Model decision confidence comparison of each class
+- in_the_wild_study.py: Scraped data prediction with trained model + additional features
+- wordclouds.py: Visual wordcloud generations on scraped data
+  
 ## Dependencies
 To install the required dependencies, run the following command:
 ```
