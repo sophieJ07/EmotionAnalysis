@@ -5,7 +5,7 @@ from train import emotion_labels
 
 num_classes = len(emotion_labels)
 
-# Define functions to calculate each metric
+# Define functions to calculate each confidence metric
 def calculate_mean_max_scores(decision_scores, class_index):
     indices = np.where(y_pred == class_index)[0]
     class_scores = decision_scores[indices]
@@ -24,18 +24,17 @@ def calculate_highest_2nd_highest_diff(decision_scores, class_index):
     diff = - (top_2_diff[:, 0] - top_2_diff[:, 1])
     return np.mean(diff)
 
+# Plot each metric 
 def plot_metrics(mean_max_scores, variance_scores, highest_2nd_highest_diff):
     bar_width = 0.2
     index = np.arange(num_classes)
 
     plt.figure(figsize=(10, 6))
 
-    # Plot each metric as a separate bar
     plt.bar(index, mean_max_scores, bar_width, label='Mean of Max Scores')
     plt.bar(index + 2 * bar_width, highest_2nd_highest_diff, bar_width, label='Highest - 2nd Highest Scores')
     plt.bar(index + bar_width, variance_scores, bar_width, label='Variance of Scores')
 
-    # Adding labels and title
     plt.xlabel('Emotion Categories')
     plt.ylabel('Scores')
     plt.title('Decision Score Metrics for Emotion Categories')
@@ -52,6 +51,7 @@ if __name__ == "__main__":
     variance_scores = []
     highest_2nd_highest_diff = []
 
+    # Run through all emotion categories
     for i in range(num_classes):
         mean_max_scores.append(calculate_mean_max_scores(decision_scores, i))
         variance_scores.append(calculate_variance_scores(decision_scores, i))

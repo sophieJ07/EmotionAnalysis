@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from train import model, X_test, y_test, y_pred
 
-# Get the decision scores (distance from decision boundaries)
 decision_scores = model.decision_function(X_test)
 
 # Correct and incorrect indices

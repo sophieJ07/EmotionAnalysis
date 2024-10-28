@@ -25,7 +25,7 @@ print(f"Cohen's Kappa: {cohen_kappa}")
 conf_matrix = confusion_matrix(y_test, y_pred)
 print(f"Confusion Matrix:\n{conf_matrix}")
 
-# Plot Confusion Matrix
+# Visualize Confusion Matrix
 plt.figure(figsize=(10, 7))
 sns.heatmap(conf_matrix, annot=True, fmt='d', xticklabels=emotion_labels, yticklabels=emotion_labels)
 plt.title('Confusion Matrix')
@@ -33,7 +33,7 @@ plt.xlabel('Predicted')
 plt.ylabel('Actual')
 plt.show()
 
-# per class accuracy & MCC
+# Per class accuracy & MCC
 for i, emotion in enumerate(emotion_labels):
     # True Positives
     TP = conf_matrix[i, i]
@@ -55,7 +55,7 @@ for i, emotion in enumerate(emotion_labels):
     print(f"MCC for {emotion}: {mcc:.2f}")
 
 
-# Matthews Correlation Coefficient (MCC) - Overall
+# Matthews Correlation Coefficient (MCC) 
 mcc_overall = matthews_corrcoef(y_test, y_pred)
 print(f"Overall MCC: {mcc_overall}")
 
@@ -67,7 +67,7 @@ distances = np.abs(decision_function)
 mean_distance = np.mean(distances)
 print(f"Mean Distance to Decision Boundary (Confidence Level): {mean_distance}")
 
-# Precision-Recall Curve and Area Under Curve (AUC)
+# Precision-Recall Curve and Area Under Curve 
 plt.figure(figsize=(12, 8))
 for i, emotion in enumerate(emotion_labels):
     y_true = (y_test == i).astype(int)
@@ -82,7 +82,7 @@ plt.ylabel('Precision')
 plt.legend(loc='lower left')
 plt.show()
 
-# ROC Curve and Area Under Curve (AUC)
+# ROC Curve and Area Under Curve 
 plt.figure(figsize=(12, 8))
 for i, emotion in enumerate(emotion_labels):
     y_true = (y_test == i).astype(int)
